@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Y轴柱状图-dataset.html</title>
+    <script src="../js/echarts.js"></script>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<div id="demo" style="width: 600px;height: 400px;"></div>
+
+<script>
+    var mychart = echarts.init($("#demo")[0]);
+    var option;
+    option = {
+        title: {
+            text: 'World Population'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross'
+            }
+        },
+        dataset: {
+            dimensions: ["city", "data1", "data2"],
+            source: {
+                "city": ['Brazil', 'Indonesia', 'USA', 'India', 'China', 'World'],
+                "data1": [18203, 23489, 29034, 104970, 131744, 630230],
+                "data2": [19325, 23438, 31000, 121594, 134141, 681807]
+            }
+        },
+        legend: {
+            show: true,
+            selector: true
+        },
+
+        xAxis: {
+            type: 'value'
+        },
+        yAxis: {
+            type: 'category'
+        },
+        series: [
+            {
+                name: '2011',
+                type: 'bar',
+                seriesLayoutBy: "row",
+                encode: {
+                    x: "data1",
+                    y: "city"
+                }
+            },
+            {
+                name: '2012',
+                type: 'bar',
+                seriesLayoutBy: "row",
+                encode: {
+                    x: "data2",
+                    y: "city"
+                }
+            }
+        ]
+    };
+    mychart.setOption(option);
+</script>
+</body>
+</html>
